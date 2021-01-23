@@ -6,4 +6,3 @@
 
 	include "site2.html";
 
-?>
