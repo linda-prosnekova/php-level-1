@@ -1,5 +1,9 @@
 ﻿<?php
-$images = array_splice(scandir('gallery_img/big/'), 2);
+require_once('db.php');
+$images = mysqli_query($mysqli, "SELECT * FROM gallery");
+
+$mysqli->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +37,8 @@ $images = array_splice(scandir('gallery_img/big/'), 2);
 			<h2>Моя галерея</h2>
 		</div>
 		<div class="gallery">
-			<? foreach ($images as $filename): ?>
-			<a rel="gallery" class="photo" href="gallery_img/big/<?= $filename ?>"><img src="gallery_img/small/<?= $filename ?>" width="150" height="100" /></a>
+			<? foreach ($images as $row): ?>
+			<a rel="gallery" class="photo" href="gallery_img/big/<?= $row['name'] ?>"><img src="gallery_img/small/<?= $row['name'] ?>" width="150" height="100" /></a>
 			<?endforeach;?>
 		</div>
 	</div>
