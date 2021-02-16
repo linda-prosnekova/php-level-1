@@ -1,11 +1,12 @@
 <?php
-require_once('db.php');
+require 'session.php';
+require_once 'db.php';
 
 if ($_GET['action'] == 'add') {
     $id = (int)$_GET['id'];
     $session = session_id();
     mysqli_query($mysqli, "INSERT INTO basket (`good_id`, `session_id`) VALUES ({$id}, '{$session}');");
-    header("Location: /catalog.php ");
+    header("Location: / ");
 }
 
 $id = $_GET['id'];

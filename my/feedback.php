@@ -1,5 +1,6 @@
 <?php
-require_once('db.php');
+require 'session.php';
+require_once 'db.php';
 
 $feedbacks = mysqli_query($mysqli, "SELECT * FROM feedback ORDER BY id DESC");
 $row = mysqli_fetch_assoc($feedbacks);
@@ -28,7 +29,7 @@ $mysqli->close();
 
 <head>
     <meta charset="UTF-8">
-    <title>Моя галерея</title>
+    <title>Отзывы</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="./scripts/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src="./scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>

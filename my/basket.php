@@ -1,5 +1,6 @@
 <?php
-require_once('db.php');
+require 'session.php';
+require_once 'db.php';
 
 if ($_GET['action'] == 'drop') {
     $id = (int)$_GET['id'];
@@ -22,7 +23,7 @@ $mysqli->close();
 
 <head>
     <meta charset="UTF-8">
-    <title>Моя галерея</title>
+    <title>Корзина</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="./scripts/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src="./scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -63,6 +64,9 @@ $mysqli->close();
             </div>
             <?endforeach;?>
         </div>
+        <form method="post" action="order.php">
+            <p><input type="submit" value="Оформить заказ" /></p>
+        </form>
     </div>
 
 </body>

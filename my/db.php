@@ -20,8 +20,6 @@ if ($mysqli->connect_error) {
     exit();
 }
 
-session_start();
-$session = session_id();
 $result = mysqli_query($mysqli, "SELECT COUNT(id) as count from basket where session_id='{$session}'");
 $row = mysqli_fetch_assoc($result);
 $count = $row['count'];

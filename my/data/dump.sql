@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 13, 2021 at 08:51 AM
+-- Generation Time: Feb 16, 2021 at 10:59 AM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -25,6 +25,15 @@ CREATE TABLE `basket` (
   `good_id` int(11) NOT NULL,
   `session_id` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `basket`
+--
+
+INSERT INTO `basket` (`id`, `good_id`, `session_id`) VALUES
+(3, 3, '7ubitpvsftk2e6ij85larsavq5'),
+(4, 2, '7ubitpvsftk2e6ij85larsavq5'),
+(5, 1, '7ubitpvsftk2e6ij85larsavq5');
 
 -- --------------------------------------------------------
 
@@ -107,6 +116,49 @@ INSERT INTO `goods` (`id`, `images`, `name`, `description`, `price`, `likes`) VA
 (2, 'good2.jpg', 'ведро', 'малярное', 50, 1),
 (3, 'good3.jpg', 'обои', 'белые', 400, 5);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `items` varchar(128) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `address`, `items`, `total_price`, `status`) VALUES
+(1, 'test', 'test', '{2: 1}{3: 1}', 450, 3),
+(2, 'Ваня', 'СПб', '{1: 1}{2: 1}{3: 1}', 550, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL,
+  `status` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `status`) VALUES
+(1, 'new'),
+(2, 'approved'),
+(3, 'canceled');
+
 --
 -- Indexes for dumped tables
 --
@@ -136,6 +188,18 @@ ALTER TABLE `goods`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -143,7 +207,7 @@ ALTER TABLE `goods`
 -- AUTO_INCREMENT for table `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -155,4 +219,16 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `goods`
 --
 ALTER TABLE `goods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
